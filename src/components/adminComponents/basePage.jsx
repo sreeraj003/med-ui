@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react'
 import Loader from '../loader';
 import AdminSideBar from "./AdminSideBar"
-import AdminHome from './adminHome';
+import AdminHome from './AdminHome';
 import PropTypes from 'prop-types'
 import Medicines from './medicines';
 
