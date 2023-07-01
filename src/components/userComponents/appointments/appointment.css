@@ -1,0 +1,19 @@
+.app-div {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+}
+.listbutt:hover {
+  color: black !important;
+}
+
+.details{
+  color: black;
+}
+
+@media (max-width: 770px){
+  .details{
+    display: none;
+  }
+}
