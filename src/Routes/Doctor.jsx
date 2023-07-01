@@ -2,7 +2,7 @@ import { lazy } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import RequireDoctor from '../context/auth/requireDoctor'
 import Signup from "../components/Signup"
-import Navbar from '../components/navbar'
+import Navbar from '../components/Navbar'
 import Otp from '../components/otp'
 import Login from '../components/Login'
 import SetProfile from '../components/doctorComponents/setProfile'

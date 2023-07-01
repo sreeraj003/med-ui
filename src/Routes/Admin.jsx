@@ -1,7 +1,7 @@
 
 import { Routes, Route } from "react-router-dom"
-import RequireAdmin from "../context/Auth/requireAdmin"
-import Navbar from "../components/navbar"
+import RequireAdmin from "../context/auth/requireAdmin"
+import Navbar from "../components/Navbar"
 import Login from "../components/Login"
 import BasePage from "../components/adminComponents/basePage"
 

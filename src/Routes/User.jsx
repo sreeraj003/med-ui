@@ -4,7 +4,7 @@ import RequireUser from '../context/auth/requireUser'
 import Login from '../components/Login'
 import Signup from "../components/Signup"
 import Otp from '../components/otp'
-import Navbar from '../components/navbar'
+import Navbar from '../components/Navbar'
 import Home from '../components/userComponents/userHome/userHome'
 import Loader from '../components/loader'
 import VideoCall from '../components/videoCall'

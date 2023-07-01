@@ -2,9 +2,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import axios from 'axios';
 import { useEffect } from 'react';
-import Doctor from './Routes/doctor';
+import Doctor from './Routes/Doctor';
 import User from "./Routes/User"
-import Admin from './Routes/admin';
+import Admin from './Routes/Admin';
 import useAuth from './hooks/useAuth';
 import { useDispatch } from 'react-redux';
 import { setDoctorData } from './redux/doctorData';
