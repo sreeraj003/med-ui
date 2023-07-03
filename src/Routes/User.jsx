@@ -61,8 +61,8 @@ function User() {
           <Route path='/forgotPassword' element={<ForgotPassword />} />
           <Route path='/newPassword/:email' element={<ResetPassword />} />4
           <Route path='/' element={<Home />} />
+          <Route path='/findDoctor' element={<PageStructure />} />
           <Route element={<RequireUser />}>
-            <Route path='/findDoctor' element={<PageStructure />} />
             <Route path='/profile' element={<ProfilePageStructure />} />
             <Route path='/appointments' element={<Appointment />} />
             <Route path='/payment' element={<Payment />} />
