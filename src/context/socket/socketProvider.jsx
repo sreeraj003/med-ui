@@ -11,7 +11,7 @@ export const useSocket = () => {
 
 export const SocketProvider = (props) => {
 
-    const socket = useMemo(() => io('https://medcoreonline.netlify.app/'), [])
+    const socket = useMemo(() => io('ws://medcoreonline.netlify.app/'), [])
     return (
         <SocketContext.Provider value={socket} >
             {props.children}
