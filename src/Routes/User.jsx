@@ -21,6 +21,7 @@ const Success = lazy(() => import('../components/userComponents/success'))
 import { setUserData } from '../redux/userData'
 import ForgotPassword from '../components/forgotPassword'
 import ResetPassword from '../components/resetPassword'
+import ErrorFallback from '../components/errorFallback'
 
 function User() {
   const dispatch = useDispatch()
@@ -62,6 +63,7 @@ function User() {
           <Route path='/newPassword/:email' element={<ResetPassword />} />4
           <Route path='/' element={<Home />} />
           <Route path='/findDoctor' element={<PageStructure />} />
+          <Route path='/error' element={<ErrorFallback />} />
           <Route element={<RequireUser />}>
             <Route path='/profile' element={<ProfilePageStructure />} />
             <Route path='/appointments' element={<Appointment />} />
@@ -70,6 +72,7 @@ function User() {
             <Route path='/feedBack' element={<FeedBack />} />
             <Route path='/call/:room' element={<VideoCall value='user' />} />
           </Route>
+            <Route path='/*' element={<ErrorFallback value='user' />} />
         </Routes>
       </Suspense>
     </>

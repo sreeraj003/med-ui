@@ -9,6 +9,7 @@ import SetProfile from '../components/doctorComponents/setProfile'
 import DocMain from '../components/doctorComponents/docMain'
 import ForgotPassword from '../components/forgotPassword'
 import ResetPassword from '../components/resetPassword'
+import ErrorFallback from '../components/errorFallback'
 
 const Success = lazy(() => import("../components/doctorComponents/success"))
 const VideoCall = lazy(() => import('../components/videoCall'))
@@ -36,6 +37,7 @@ function Doctor() {
           <Route path='/createPrscription' element={<DocMain value="createPrescription" />} />
           <Route path='/patients' element={<DocMain value="patients" />} />
         </Route>
+          <Route path='/*' element={<ErrorFallback value="doctor" />} />
       </Routes>
     </>
   )

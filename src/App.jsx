@@ -18,7 +18,6 @@ function App() {
 
 
   useEffect(() => {
-
     datacall()
     async function datacall() {
       const doctorToken = localStorage.getItem('doctorToken')

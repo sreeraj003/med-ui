@@ -4,6 +4,7 @@ import RequireAdmin from "../context/auth/requireAdmin"
 import Navbar from "../components/Navbar"
 import Login from "../components/Login"
 import BasePage from "../components/adminComponents/basePage"
+import ErrorFallback from "../components/errorFallback"
 
 function Admin() {
   return (
@@ -19,7 +20,7 @@ function Admin() {
           <Route path="/payments" element={<BasePage value={"payments"} user={"admin"} />} />
           <Route path="/medicines" element={<BasePage value={"medicines"} user={"admin"} />} />
         </Route>
-        <Route path="/*" element={<Login value={'admin'} />} />
+        <Route path="/*" element={<ErrorFallback value='admin' />} />
       </Routes>
     </>
   )

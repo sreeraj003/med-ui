@@ -20,6 +20,7 @@
     "react-apexcharts": "^1.4.0",
     "react-data-table-component": "^7.5.3",
     "react-dom": "^18.2.0",
+    "react-error-boundary": "^4.0.10",
     "react-icons": "^4.8.0",
     "react-loader-spinner": "^5.3.4",
     "react-player": "^2.12.0",
