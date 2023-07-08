@@ -10,7 +10,6 @@ function Presciption() {
   const history = useNavigate()
   const userData = useSelector(state => state.user.data)
   const [prescriptions, setPrescriptions] = useState([])
-  const userToken = localStorage.getItem('userToken')
 
   const dataCall = useCallback(async () => {
     await axios.get(import.meta.env.VITE_BASE_URL + 'prescriptions', {
@@ -26,7 +25,7 @@ function Presciption() {
         setPrescriptions(res.data)
       }
     })
-  }, [history, userToken])
+  }, [history])
 
 
   useEffect(() => {

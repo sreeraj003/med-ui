@@ -9,7 +9,6 @@ function Medicines() {
   const [dose, setDose] = useState('')
   const [doseData, setDoseData] = useState([])
   const [cost, setCost] = useState('')
-  const adminToken = localStorage.getItem("adminToken")
   const [createStatus, setStatus] = useState('')
   const [filteredData, setFilteredData] = useState([]);
   const [search, setSearch] = useState('')
@@ -27,7 +26,7 @@ function Medicines() {
         setFilteredData(res.data)
       }
     })
-  }, [adminToken])
+  }, [])
 
   const handleSearch = useCallback((e) => {
     const searchValue = e.target.value.toLowerCase();
@@ -63,7 +62,7 @@ function Medicines() {
         );
       }
     });
-  }, [adminToken]);
+  }, []);
 
   const columns = [
     {

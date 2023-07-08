@@ -10,7 +10,6 @@ function CreatePrescription() {
     const doseRef = useRef()
     const history = useNavigate()
     const [medicines, setMedicines] = useState()
-    const doctorToken = localStorage.getItem('doctorToken')
     const [selectedMed, setSelectedMed] = useState('')
     const [dose, setDose] = useState('')
     const [medDetails, setMedDetails] = useState(new Map())
@@ -47,7 +46,7 @@ function CreatePrescription() {
                 history('/doctor/consult')
             }
         })
-    }, [doctorToken, history, medDetails, userData._id])
+    }, [history, medDetails, userData._id])
 
     const handleAddClick = useCallback(() => {
         let med = ''
@@ -86,7 +85,7 @@ function CreatePrescription() {
         }).then(res => {
             setMedicines(res.data)
         })
-    }, [doctorToken])
+    }, [])
 
     useEffect(() => {
         datacall()

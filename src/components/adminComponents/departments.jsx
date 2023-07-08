@@ -6,7 +6,6 @@ import { validateCapitalLetter } from "../validator"
 function Departments() {
   const [departmentList, setDepartList] = useState([])
   const [newDep, setNewDep] = useState('')
-  const adminToken = localStorage.getItem("adminToken")
   const [createStatus, setStatus] = useState('')
   const [image, setImage] = useState([])
   const [preview, setPreView] = useState('')
@@ -23,7 +22,7 @@ function Departments() {
       setDepartList(res.data)
       setFilteredData(res.data)
     })
-  },[adminToken])
+  },[])
 
   const handleSearch = (e) => {
     const searchValue = e.target.value.toLowerCase();
