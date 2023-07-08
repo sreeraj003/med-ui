@@ -27,6 +27,7 @@ function App() {
         axios.defaults.headers.common['Authorization'] = `Bearer ${doctorToken}`;
         await axios.get(import.meta.env.VITE_BASE_URL + `doctor/docData`)
           .then(res => {
+            console.log(res.data);
             if (res.data) {
               if (res.data !== 'unauthorized') {
                 dispatch(setDoctorData(res.data))
