@@ -1,5 +1,5 @@
-import { lazy, useEffect } from 'react'
-import { Routes, Route, useNavigate } from 'react-router-dom'
+import { lazy } from 'react'
+import { Routes, Route } from 'react-router-dom'
 import RequireDoctor from '../context/auth/requireDoctor'
 import Signup from "../components/Signup"
 import Navbar from '../components/Navbar'
