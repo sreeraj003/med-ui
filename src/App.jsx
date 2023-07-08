@@ -9,6 +9,7 @@ import useAuth from './hooks/useAuth';
 import { useDispatch } from 'react-redux';
 
 import { setAdminData } from './redux/adminData';
+import { setDoctorData } from './redux/doctorData';
 
 function App() {
 
@@ -20,9 +21,22 @@ function App() {
     datacall()
     async function datacall() {
       const adminToken = localStorage.getItem('adminToken')
-
-
+      const doctorToken = localStorage.getItem('doctorToken')
      
+      if (doctorToken) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${doctorToken}`;
+        await axios.get(import.meta.env.VITE_BASE_URL + `doctor/docData`)
+          .then(res => {
+            if (res.data) {
+              if (res.data !== 'unauthorized') {
+                dispatch(setDoctorData(res.data))
+              }
+              setDoctor(true)
+            }
+          })
+      } else {
+        setDoctor(false)
+      }
       if (adminToken) {
         axios.defaults.headers.common['Authorization'] = `Bearer ${adminToken}`;
         await axios.get(import.meta.env.VITE_BASE_URL + `admin/adminData`)
