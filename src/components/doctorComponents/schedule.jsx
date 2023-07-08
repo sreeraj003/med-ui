@@ -15,7 +15,7 @@ function Schedule() {
   console.log(scheduleList);
 
   const dispatch = useDispatch()
-  const doctorToken = localStorage.getItem('doctorToken')
+  // const doctorToken = localStorage.getItem('doctorToken')
 
 
 
@@ -31,7 +31,7 @@ function Schedule() {
         })
     }
     dataCall()
-  }, [dispatch, doctorToken])
+  }, [dispatch])
 
 
   const handleSchedule = async (e) => {
@@ -44,9 +44,9 @@ function Schedule() {
       return
     }
     await axios.post(import.meta.env.VITE_BASE_URL + 'doctor/setSchedule', { date: freeDate, time: freeTime, action: e.target.value }, {
-      headers: {
-        Authorization: `Bearer ${doctorToken}`,
-      }
+      // headers: {
+      //   Authorization: `Bearer ${doctorToken}`,
+      // }
     }).then(res => {
       if (res.data == 'error') {
         setMsg("Something went wrong")
@@ -65,9 +65,9 @@ function Schedule() {
     e.preventDefault()
     const data = e.target.value.split('_')
     await axios.post(import.meta.env.VITE_BASE_URL + 'doctor/setSchedule', { date: data[0], time: data[1], action: 'remove' }, {
-      headers: {
-        Authorization: `Bearer ${doctorToken}`,
-      }
+      // headers: {
+      //   Authorization: `Bearer ${doctorToken}`,
+      // }
     }).then(res => {
       if (res.data == 'error') {
         setMsg("Something went wrong")
@@ -96,7 +96,7 @@ function Schedule() {
             <div className="row">
               <div className="col-md-6">
                 <div className="dropdown">
-                  <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button className="btn dropd dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     {freeDate ? freeDate : 'Day'}
                   </button>
                   <ul className="dropdown-menu">
@@ -109,7 +109,7 @@ function Schedule() {
               </div>
               <div className="col-md-6">
                 <div className="dropdown">
-                  <button type="button" className="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button type="button" className="btn dropd dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                     Slot
                   </button>
                   <ul className="dropdown-menu  dropdown-toggle-split">
@@ -152,7 +152,7 @@ function Schedule() {
                     <b style={{ fontSize: '20px' }}>Date : </b>{el.date}
                   </div>
                   <div>
-                    <h5>Time Slotes :</h5>{el.time.map(time => <div className='btn p-1 m-2 text-white bg-secondary' key={time}>{time}<button className='btn mt-0 ms-1 text-white' value={el.date + '_' + time} onClick={removeSlot}>X</button></div>)}
+                    <h5>Time Slotes :</h5>{el.time.map(time => <div className='btn p-1 m-2 text-white dropd' key={time}>{time}<button className='btn mt-0 ms-1 text-danger' value={el.date + '_' + time} onClick={removeSlot}>X</button></div>)}
                     <br />
                   </div>
                 </div>

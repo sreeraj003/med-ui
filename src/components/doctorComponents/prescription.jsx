@@ -33,7 +33,7 @@ function Prescriptions() {
     },
     {
       name: 'Date',
-      selector: (row) => row.date
+      selector: (row) => row.createdAt.split(' ')[0]
     },
     {
       name: 'Medicines',
