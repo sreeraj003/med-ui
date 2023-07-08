@@ -16,9 +16,9 @@ function AdminHome() {
   useEffect(() => {
     async function dataCall() {
       axios.get(import.meta.env.VITE_BASE_URL + 'admin/income', {
-        headers: {
-          Authorization: `Bearer ${adminToken}`,
-        }
+        // headers: {
+        //   Authorization: `Bearer ${adminToken}`,
+        // }
       }).then(res => {
         setAppointments(res.data)
         const inc = res.data.reduce((acc, occ) => {

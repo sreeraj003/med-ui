@@ -10,12 +10,25 @@ import DocMain from '../components/doctorComponents/docMain'
 import ForgotPassword from '../components/forgotPassword'
 import ResetPassword from '../components/resetPassword'
 import ErrorFallback from '../components/errorFallback'
+import axios from 'axios'
 
 
 const Success = lazy(() => import("../components/doctorComponents/success"))
 const VideoCall = lazy(() => import('../components/videoCall'))
 
 function Doctor() {
+  axios.interceptors.request.use(
+    (config) => {
+      const doctorToken = localStorage.getItem('doctorToken');
+      if (doctorToken) {
+        config.headers['Authorization'] = `Bearer ${doctorToken}`;
+      }
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
+    }
+  );
   return (
     <>
       <Navbar value='doctor' />

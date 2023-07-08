@@ -8,7 +8,7 @@ function Payment() {
 
     const history = useNavigate()
 
-    const userToken = localStorage.getItem('userToken')
+    // const userToken = localStorage.getItem('userToken')
     const appData = useSelector(state => state.appointment.appointment)
     const amount = appData.fee + (appData.fee * 0.1)
 
@@ -24,9 +24,9 @@ function Payment() {
             if (payment) {
                 console.log(appData);
                 await axios.post(import.meta.env.VITE_BASE_URL + `bookslot`, appData, {
-                    headers: {
-                        Authorization: `Bearer ${userToken}`
-                    }
+                    // headers: {
+                    //     Authorization: `Bearer ${userToken}`
+                    // }
                 }).then(res => {
                     if (res.data == 'success') {
                         history('/success')

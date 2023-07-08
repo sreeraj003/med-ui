@@ -53,9 +53,9 @@ function Patients() {
   useEffect(() => {
     const patinetsData = async () => {
       await axios.get(import.meta.env.VITE_BASE_URL + 'admin/patients', {
-        headers: {
-          Authorization: `Bearer ${adminToken}`,
-        }
+        // headers: {
+        //   Authorization: `Bearer ${adminToken}`,
+        // }
       }).then(res => {
         setPatientsList(res.data)
         setFilteredData(res.data)

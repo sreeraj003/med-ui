@@ -5,8 +5,21 @@ import Navbar from "../components/Navbar"
 import Login from "../components/Login"
 import BasePage from "../components/adminComponents/basePage"
 import ErrorFallback from "../components/errorFallback"
+import axios from "axios"
 
 function Admin() {
+  axios.interceptors.request.use(
+    (config) => {
+      const adminToken = localStorage.getItem('adminToken');
+      if (adminToken) {
+        config.headers['Authorization'] = `Bearer ${adminToken}`;
+      }
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
+    }
+  );
   return (
     <>
       <Navbar value='admin' />

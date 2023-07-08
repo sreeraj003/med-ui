@@ -14,9 +14,9 @@ function Presciption() {
 
   const dataCall = useCallback(async () => {
     await axios.get(import.meta.env.VITE_BASE_URL + 'prescriptions', {
-      headers: {
-        Authorization: `Brearer ${userToken}`
-      }
+      // headers: {
+      //   Authorization: `Brearer ${userToken}`
+      // }
     }).then(res => {
       if (res.data == 'blocked') {
         history('/login')

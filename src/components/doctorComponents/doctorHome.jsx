@@ -14,9 +14,9 @@ function DoctorHome() {
   useEffect(() => {
     async function dataCall() {
       await axios.get(import.meta.env.VITE_BASE_URL + 'doctor/dash', {
-        headers: {
-          Authorization: `Bearer ${doctorToken}`
-        }
+        // headers: {
+        //   Authorization: `Bearer ${doctorToken}`
+        // }
       }).then(res => {
         setDocAppoint(res.data)
         const inc = res.data.reduce((acc, occ) => {

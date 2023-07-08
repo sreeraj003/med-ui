@@ -78,9 +78,9 @@ function Doctors() {
   useEffect(() => {
     const doctorData = async () => {
       await axios.get(import.meta.env.VITE_BASE_URL + 'admin/doctors', {
-        headers: {
-          Authorization: `Bearer ${adminToken}`,
-        }
+        // headers: {
+        //   Authorization: `Bearer ${adminToken}`,
+        // }
       }).then(res => {
 
         setDoctorsList(res.data)

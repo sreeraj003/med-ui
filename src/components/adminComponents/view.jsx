@@ -67,9 +67,9 @@ function View({ user, setSelected, value }) {
             setReason('')
         } else {
             await axios.patch(import.meta.env.VITE_BASE_URL + `admin/manageDoctor/${id}`, { action: type, }, {
-                headers: {
-                    Authorization: `Bearer ${adminToken}`,
-                }
+                // headers: {
+                //     Authorization: `Bearer ${adminToken}`,
+                // }
             })
                 .then(res => {
                     if (res.data == "approved") {
@@ -96,11 +96,11 @@ function View({ user, setSelected, value }) {
     }
 
     const handlePatient = async (e) => {
-        const adminToken = localStorage.getItem('adminToken')
+        // const adminToken = localStorage.getItem('adminToken')
         await axios.patch(import.meta.env.VITE_BASE_URL + `admin/managePatient/${e.target.value}`, { isuserBlocked: isuserBlocked }, {
-            headers: {
-                Authorization: `Bearer ${adminToken}`,
-            }
+            // headers: {
+            //     Authorization: `Bearer ${adminToken}`,
+            // }
         })
             .then(res => {
                 console.log(res.data);

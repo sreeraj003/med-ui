@@ -54,9 +54,9 @@ function DocAppointments() {
   useEffect(() => {
     const getAppointments = async () => {
       const res = await axios.get(import.meta.env.VITE_BASE_URL + 'doctor/appointments', {
-        headers: {
-          Authorization: `Bearer ${doctorToken}`
-        }
+        // headers: {
+        //   Authorization: `Bearer ${doctorToken}`
+        // }
       });
       setFilteredData(res.data)
       setAppointments(res.data);

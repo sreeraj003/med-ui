@@ -20,9 +20,9 @@ function Consult() {
         async function datacall() {
             try {
                 const appointData = await axios.get(import.meta.env.VITE_BASE_URL + `doctor/consult`, {
-                    headers: {
-                        Authorization: `Bearer ${docToken}`
-                    }
+                    // headers: {
+                    //     Authorization: `Bearer ${docToken}`
+                    // }
                 })
                 console.log(appointData);
                 setConsult(appointData.data)

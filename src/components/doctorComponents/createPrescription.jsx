@@ -39,9 +39,9 @@ function CreatePrescription() {
             id
         }));
         await axios.patch(import.meta.env.VITE_BASE_URL + 'doctor/addPrescription', payload, {
-            headers: {
-                Authorization: `Bearer ${doctorToken}`,
-            }
+            // headers: {
+            //     Authorization: `Bearer ${doctorToken}`,
+            // }
         }).then(res => {
             if (res.data == 'done') {
                 history('/doctor/consult')
@@ -80,9 +80,9 @@ function CreatePrescription() {
 
     const datacall = useCallback(async () => {
         await axios.get(import.meta.env.VITE_BASE_URL + 'doctor/medicines', {
-            headers: {
-                Authorization: `Bearer ${doctorToken}`
-            }
+            // headers: {
+            //     Authorization: `Bearer ${doctorToken}`
+            // }
         }).then(res => {
             setMedicines(res.data)
         })

@@ -28,6 +28,21 @@ function User() {
   const { setUser } = useAuth()
   const userToken = localStorage.getItem('userToken')
   const history = useNavigate()
+
+
+  axios.interceptors.request.use(
+    (config) => {
+      if (userToken) {
+        config.headers['Authorization'] = `Bearer ${userToken}`;
+      }
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
+    }
+  );
+
+
   useEffect(() => {
     async function dataCall() {
       if (userToken) {
@@ -72,7 +87,7 @@ function User() {
             <Route path='/feedBack' element={<FeedBack />} />
             <Route path='/call/:room' element={<VideoCall value='user' />} />
           </Route>
-            <Route path='/*' element={<ErrorFallback value='user' />} />
+          <Route path='/*' element={<ErrorFallback value='user' />} />
         </Routes>
       </Suspense>
     </>

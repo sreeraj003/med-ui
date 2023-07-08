@@ -11,9 +11,9 @@ function Payments() {
   useEffect(() => {
     async function dataCall() {
       await axios.get(import.meta.env.VITE_BASE_URL + 'admin/payments', {
-        headers: {
-          Authorization: `Bearer ${doctorToken}`
-        }
+        // headers: {
+        //   Authorization: `Bearer ${doctorToken}`
+        // }
       }).then(res => {
         setPayments(res.data)
         setFilteredData(res.data)

@@ -29,9 +29,9 @@ function Appointment() {
                 history('/findDoctor')
             } else {
                 await axios.get(import.meta.env.VITE_BASE_URL + `docSchedule/${docData._id}`, {
-                    headers: {
-                        Authorization: `Bearer ${userToken}`,
-                    }
+                    // headers: {
+                    //     Authorization: `Bearer ${userToken}`,
+                    // }
                 }).then(res => {
                     console.log(res.data);
                     if (res.data == 'blocked') {

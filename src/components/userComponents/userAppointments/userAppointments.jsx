@@ -50,9 +50,9 @@ function UserAppointments() {
         async function datacall() {
             await axios
                 .get(import.meta.env.VITE_BASE_URL + 'appointments', {
-                    headers: {
-                        Authorization: `Bearer ${userToken}`
-                    }
+                    // headers: {
+                    //     Authorization: `Bearer ${userToken}`
+                    // }
                 })
                 .then(res => {
                     console.log(res.data);

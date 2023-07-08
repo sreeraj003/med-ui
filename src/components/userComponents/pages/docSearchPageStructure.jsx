@@ -30,9 +30,9 @@ function PageStructure() {
         e.preventDefault();
         if (!search) {
             await axios.get(import.meta.env.VITE_BASE_URL + `searchDoc/all`, {
-                headers: {
-                    Authorization: `Bearer ${userToken}`
-                }
+                // headers: {
+                //     Authorization: `Bearer ${userToken}`
+                // }
             }).then(res => {
                 setFilteredData(res.data)
             })

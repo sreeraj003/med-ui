@@ -16,9 +16,9 @@ function Medicines() {
 
   const departmentData = useCallback(async () => {
     await axios.get(import.meta.env.VITE_BASE_URL + 'admin/medicines', {
-      headers: {
-        Authorization: `Bearer ${adminToken}`,
-      }
+      // headers: {
+      //   Authorization: `Bearer ${adminToken}`,
+      // }
     }).then(res => {
       if (res.data == 'exist') {
         setStatus('exist')
@@ -44,9 +44,9 @@ function Medicines() {
     await axios.patch(import.meta.env.VITE_BASE_URL + `admin/deleteMedicine`, {
       id: row._id
     }, {
-      headers: {
-        Authorization: `Bearer ${adminToken}`,
-      }
+      // headers: {
+      //   Authorization: `Bearer ${adminToken}`,
+      // }
     }).then(res => {
       if (res.data === 'error') {
         setStatus('error');
@@ -101,9 +101,9 @@ function Medicines() {
       const isValid = validateCapitalLetter(newMed)
       if (isValid) {
         await axios.post(import.meta.env.VITE_BASE_URL + 'admin/addMedicine', { newMed: newMed, cost: cost, doseData: doseData }, {
-          headers: {
-            Authorization: `Bearer ${adminToken}`,
-          }
+          // headers: {
+          //   Authorization: `Bearer ${adminToken}`,
+          // }
         }).then(res => {
           setStatus(res.data)
           setTimeout(() => {

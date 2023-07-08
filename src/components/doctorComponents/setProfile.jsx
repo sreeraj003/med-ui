@@ -29,15 +29,15 @@ function SetProfile() {
     useEffect(() => {
 
         const fetchDepartments = async () => {
-            const doctorToken = localStorage.getItem('doctorToken');
+            // const doctorToken = localStorage.getItem('doctorToken');
             try {
                 const response = await axios.get(
                     import.meta.env.VITE_BASE_URL + 'doctor/departments',
-                    {
-                        headers: {
-                            Authorization: `Bearer ${doctorToken}`,
-                        },
-                    }
+                    // {
+                    //     headers: {
+                    //         Authorization: `Bearer ${doctorToken}`,
+                    //     },
+                    // }
                 );
                 setDepartments(response.data);
             } catch (error) {

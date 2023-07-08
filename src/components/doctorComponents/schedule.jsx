@@ -22,9 +22,9 @@ function Schedule() {
   useEffect(() => {
     const dataCall = async () => {
       await axios.get(import.meta.env.VITE_BASE_URL + 'doctor/schedule', {
-        headers: {
-          Authorization: `Bearer ${doctorToken}`
-        }
+        // headers: {
+        //   Authorization: `Bearer ${doctorToken}`
+        // }
       })
         .then(res => {
           dispatch(setSchedule(res.data))

@@ -15,9 +15,9 @@ function Departments() {
 
   const departmentData = useCallback(async () => {
     await axios.get(import.meta.env.VITE_BASE_URL + 'admin/departments', {
-      headers: {
-        Authorization: `Bearer ${adminToken}`,
-      }
+      // headers: {
+      //   Authorization: `Bearer ${adminToken}`,
+      // }
     }).then(res => {
 
       setDepartList(res.data)
@@ -42,9 +42,9 @@ function Departments() {
       status: row.isBlocked,
       id: row._id
     }, {
-      headers: {
-        Authorization: `Bearer ${adminToken}`,
-      }
+      // headers: {
+      //   Authorization: `Bearer ${adminToken}`,
+      // }
     }).then(res => {
       if (res == 'error') {
         setStatus
@@ -102,9 +102,9 @@ function Departments() {
       formData.append("image", image),
         formData.append("newDep", newDep)
       await axios.post(import.meta.env.VITE_BASE_URL + 'admin/createDepartment', formData, {
-        headers: {
-          Authorization: `Bearer ${adminToken}`,
-        }
+        // headers: {
+        //   Authorization: `Bearer ${adminToken}`,
+        // }
       }).then(res => {
         setStatus(res.data)
         setTimeout(() => {
