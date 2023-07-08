@@ -1,5 +1,5 @@
-import { lazy } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { lazy, useEffect } from 'react'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import RequireDoctor from '../context/auth/requireDoctor'
 import Signup from "../components/Signup"
 import Navbar from '../components/Navbar'
@@ -10,11 +10,42 @@ import DocMain from '../components/doctorComponents/docMain'
 import ForgotPassword from '../components/forgotPassword'
 import ResetPassword from '../components/resetPassword'
 import ErrorFallback from '../components/errorFallback'
+import { useDispatch } from 'react-redux'
+import useAuth from '../context/hooks/useAuth'
+import axios from 'axios'
+import { setDoctorData } from '../redux/doctorData'
 
 const Success = lazy(() => import("../components/doctorComponents/success"))
 const VideoCall = lazy(() => import('../components/videoCall'))
 
 function Doctor() {
+  const dispatch = useDispatch()
+  const { setDoctor } = useAuth()
+  const doctorToken = localStorage.getItem('doctorToken')
+  const history = useNavigate()
+  useEffect(() => {
+    async function dataCall() {
+      if (doctorToken) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${doctorToken}`;
+        await axios.get(import.meta.env.VITE_BASE_URL + `userData`)
+          .then(res => {
+            if (res.data) {
+              if (res.data !== 'unauthorized' || res.data !== 'blocked') {
+                dispatch(setDoctorData(res.data))
+                setDoctor(true)
+              } else {
+                history('/login')
+              }
+            }
+
+          })
+      } else {
+        setDoctor(false)
+
+      }
+    }
+    dataCall()
+  }, [dispatch, history, setDoctor, doctorToken])
   return (
     <>
       <Navbar value='doctor' />

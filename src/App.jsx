@@ -7,7 +7,6 @@ import User from "./Routes/User"
 import Admin from './Routes/Admin';
 import useAuth from './hooks/useAuth';
 import { useDispatch } from 'react-redux';
-import { setDoctorData } from './redux/doctorData';
 
 import { setAdminData } from './redux/adminData';
 
@@ -20,24 +19,10 @@ function App() {
   useEffect(() => {
     datacall()
     async function datacall() {
-      const doctorToken = localStorage.getItem('doctorToken')
       const adminToken = localStorage.getItem('adminToken')
 
 
-      if (doctorToken) {
-        axios.defaults.headers.common['Authorization'] = `Bearer ${doctorToken}`;
-        await axios.get(import.meta.env.VITE_BASE_URL + `doctor/doctorData`)
-          .then(res => {
-            if (res.data) {
-              if (res.data !== 'unauthorized') {
-                dispatch(setDoctorData(res.data))
-              }
-              setDoctor(true)
-            }
-          })
-      } else {
-        setDoctor(false)
-      }
+     
       if (adminToken) {
         axios.defaults.headers.common['Authorization'] = `Bearer ${adminToken}`;
         await axios.get(import.meta.env.VITE_BASE_URL + `admin/adminData`)
