@@ -27,7 +27,7 @@ function Doctor() {
     async function dataCall() {
       if (doctorToken) {
         axios.defaults.headers.common['Authorization'] = `Bearer ${doctorToken}`;
-        await axios.get(import.meta.env.VITE_BASE_URL + `userData`)
+        await axios.get(import.meta.env.VITE_BASE_URL + `doctor/docaData`)
           .then(res => {
             if (res.data) {
               if (res.data !== 'unauthorized' || res.data !== 'blocked') {
