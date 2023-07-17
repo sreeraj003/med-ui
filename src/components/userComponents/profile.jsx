@@ -21,7 +21,6 @@ function Profile() {
     useEffect(() => {
         async function dataCall() {
             if (userToken) {
-                // axios.defaults.headers.common['Authorization'] = `Bearer ${userToken}`;
                 await axios.get(import.meta.env.VITE_BASE_URL + `userData`)
                     .then(res => {
                         if (res.data == 'blocked') {
@@ -38,6 +37,12 @@ function Profile() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+
+        if(!name || !age||!address||!contact||!gender){
+            setMsg('Please fill the blank')
+            return
+        }  
+
         const formData = new FormData();
         formData.append('name', name);
         formData.append('age', age)
