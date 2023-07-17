@@ -23,6 +23,7 @@ export const displayRazorpay = async (amount, appData) => {
     alert("You are offline");
     return;
   }
+  console.log(1);
 
   const options = {
     key: import.meta.env.VITE_RAZORPAY_KEY,
@@ -41,6 +42,8 @@ export const displayRazorpay = async (amount, appData) => {
       day: appData.date,
       user: appData.user
     });
+
+    console.log(response);
 
     if (response.data !== 'unavailable') {
       const paymentPromise = new Promise((resolve, reject) => {

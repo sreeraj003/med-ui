@@ -10,8 +10,6 @@ function PageStructure() {
     const [isSearch, setIsSearch] = useState(false);
     const [department, setDepartments] = useState([]);
 
-    const userToken = localStorage.getItem('userToken')
-
     useEffect(() => {
         const fetchDoctors = async () => {
             try {
@@ -30,24 +28,18 @@ function PageStructure() {
         e.preventDefault();
         if (!search) {
             await axios.get(import.meta.env.VITE_BASE_URL + `searchDoc/all`, {
-                // headers: {
-                //     Authorization: `Bearer ${userToken}`
-                // }
             }).then(res => {
                 setFilteredData(res.data)
             })
         } else {
 
             await axios.get(import.meta.env.VITE_BASE_URL + `searchDoc/${search}`, {
-                headers: {
-                    Authorization: `Bearer ${userToken}`
-                }
             }).then(res => {
                 setFilteredData(res.data)
             })
         }
         setIsSearch(true);
-    }, [search, userToken])
+    }, [search])
 
     const handleCategory = (e) => {
         const filtered = docData.filter(
@@ -77,7 +69,6 @@ function PageStructure() {
                                                 key={dep.name}
                                                 value={dep.name}
                                                 onClick={(e) => handleCategory(e)}
-                                                // onChange={(e) => handleCategory(e)}
                                                 id={dep.name}
                                             />
                                             <label className="form-check-label" htmlFor={dep.name} >

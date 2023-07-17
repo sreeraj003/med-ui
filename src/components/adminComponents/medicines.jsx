@@ -99,6 +99,14 @@ function Medicines() {
       console.log(doseData);
       const isValid = validateCapitalLetter(newMed)
       if (isValid) {
+        if (cost.toString() < 0) {
+          setStatus('please enter proper cost')
+          return
+        }
+        if (dose.toString() < 0) {
+          setStatus('please enter proper dose')
+          return
+        }
         await axios.post(import.meta.env.VITE_BASE_URL + 'admin/addMedicine', { newMed: newMed, cost: cost, doseData: doseData }, {
           // headers: {
           //   Authorization: `Bearer ${adminToken}`,
@@ -157,6 +165,42 @@ function Medicines() {
                     <div key={index} style={{ marginRight: '10px' }}>{el}</div>
                   ))}
                 </div>
+                {
+                  createStatus == "error" ?
+                    <div className="alert alert-danger" role="alert">
+                      There was an error! cannot create depaprtment.
+                    </div>
+                    : createStatus == "success" ?
+                      <div className="alert alert-success" role="alert">
+                        Department created successfully.
+                      </div>
+                      : createStatus === 'exist' ?
+                        <div className="alert alert-danger" role="alert">
+                          Department already exist.
+                        </div>
+                        : createStatus === 'capLetter' ?
+                          <div className="alert alert-danger" role="alert">
+                            First letter of department should be capital.
+                          </div>
+                          : createStatus === 'validate' ?
+                            <div className="alert alert-danger" role="alert">
+                              Please enter valid Details
+                            </div>
+                            : createStatus === 'exist' ?
+                              <div className="alert alert-danger" role="alert">
+                                Medicine already exist.
+                              </div>
+                              : createStatus == 'please enter proper dose' ?
+                                <div className="alert alert-danger" role="alert">
+                                  please enter proper dose.
+                                </div>
+                                : createStatus == 'please enter proper cost' ?
+                                  <div className="alert alert-danger" role="alert">
+                                    please enter proper cost
+                                  </div>
+
+                                  : ''
+                }
               </div>
 
 
@@ -171,40 +215,12 @@ function Medicines() {
           </div>
         </div>
       </div>
-
       <div>
         <button type="button" className="btn mb-2 ms-1 btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" >Create Medicine</button>
       </div>
       <div className="ms-1" style={{ zIndex: '0' }}>
-        {
-          createStatus == "error" ?
-            <div className="alert alert-danger" role="alert">
-              There was an error! cannot create depaprtment.
-            </div>
-            : createStatus == "success" ?
-              <div className="alert alert-success" role="alert">
-                Department created successfully.
-              </div>
-              : createStatus === 'exist' ?
-                <div className="alert alert-danger" role="alert">
-                  Department already exist.
-                </div>
-                : createStatus === 'capLetter' ?
-                  <div className="alert alert-danger" role="alert">
-                    First letter of department should be capital.
-                  </div>
-                  : createStatus === 'validate' ?
-                    <div className="alert alert-danger" role="alert">
-                      Please enter valid Details
-                    </div>
-                    : createStatus === 'exist' ?
-                      <div className="alert alert-danger" role="alert">
-                        Medicine already exist.
-                      </div>
-                      : ''
-
-        }
         <h3>Departments</h3>
+
         <input
           type="text"
           value={search}
@@ -212,6 +228,7 @@ function Medicines() {
           placeholder="Search..."
           className="form-control w-25 mb-2"
         />
+
         <DataTables columns={columns} title='Departments' data={filteredData} />
       </div>
     </>
