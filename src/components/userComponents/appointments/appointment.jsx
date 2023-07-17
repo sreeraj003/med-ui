@@ -29,9 +29,6 @@ function Appointment() {
                 history('/findDoctor')
             } else {
                 await axios.get(import.meta.env.VITE_BASE_URL + `docSchedule/${docData._id}`, {
-                    // headers: {
-                    //     Authorization: `Bearer ${userToken}`,
-                    // }
                 }).then(res => {
                     console.log(res.data);
                     if (res.data == 'blocked') {
@@ -92,8 +89,8 @@ function Appointment() {
                             <div className="col-7">
                                 <p>{userData.userName?userData.userName:' '}</p>
                                 <p>{userData?.age}</p>
-                                <p>{userData.gender?userData.gender:' '}</p>
-                                <p>{userData.address?userData.address:' '}</p>
+                                <p>{userData.gender?userData.gender:'Unknown'}</p>
+                                <p>{userData.address?userData.address:'No address found'}</p>
                                 <textarea name="issues" id="" value={issues} onChange={(e) => setIssues(e.target.value)} className='form-control' cols="30" rows="5" placeholder='Enter your health issues here...' />
                             </div>
                         </div>

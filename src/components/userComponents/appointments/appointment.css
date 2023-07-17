@@ -17,3 +17,8 @@
     display: none;
   }
 }
+
+.appLink{
+  text-decoration: none;
+  color: black;
+}
