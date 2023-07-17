@@ -38,7 +38,7 @@ function Profile() {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        if(!name || !age||!address||!contact||!gender){
+        if(!name || !age||!address||address.trim()==''||!contact||!gender){
             setMsg('Please fill the blank')
             return
         }  
@@ -100,6 +100,7 @@ function Profile() {
                     <input
                         className="form-control w-25 m-auto mt-3"
                         type="file"
+                        accept='image/*'
                         onChange={(e) => {
                             setProfile(e.target.files[0]);
                             setPreview(URL.createObjectURL(e.target.files[0]));
