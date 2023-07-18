@@ -31,7 +31,7 @@ function Home() {
       </div>
       <div className="container card mt-5 mb-5 p-4">
         <h3>Departments Available</h3>
-        <p>You can select the department you need to checkout.</p>
+        <p>We proovide solutions, if your problems are in...</p>
         <div className="row">
           {departments && departments.map(dep => (
             <div className="col-md-3 text-center  col-sm-4 col-6 h-25" key={dep._id}>
