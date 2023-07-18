@@ -56,7 +56,7 @@ function Navbar({ value }) {
                 </div>
                 {
                     value === 'doctor' ? <>
-                        <button className='btn btn-outline-success text-dark doc_nav' onClick={() => history('/doctor/prescriptions')} ><BiNotepad style={{ marginTop: '-7px' }} />Prescriptions</button>
+                        <button className='btn btn-outline-success text-dark doc_nav' onClick={() => history('/doctor/createPrscription')} ><BiNotepad style={{ marginTop: '-7px' }} />Prescriptions</button>
                     </>
                         : ''
                 }

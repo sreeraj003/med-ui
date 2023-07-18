@@ -14,11 +14,7 @@ function Medicines() {
   const [search, setSearch] = useState('')
 
   const departmentData = useCallback(async () => {
-    await axios.get(import.meta.env.VITE_BASE_URL + 'admin/medicines', {
-      // headers: {
-      //   Authorization: `Bearer ${adminToken}`,
-      // }
-    }).then(res => {
+    await axios.get(import.meta.env.VITE_BASE_URL + 'admin/medicines').then(res => {
       if (res.data == 'exist') {
         setStatus('exist')
       } else {
@@ -42,10 +38,6 @@ function Medicines() {
   const deleteMedicine = useCallback(async (row) => {
     await axios.patch(import.meta.env.VITE_BASE_URL + `admin/deleteMedicine`, {
       id: row._id
-    }, {
-      // headers: {
-      //   Authorization: `Bearer ${adminToken}`,
-      // }
     }).then(res => {
       if (res.data === 'error') {
         setStatus('error');
@@ -108,9 +100,6 @@ function Medicines() {
           return
         }
         await axios.post(import.meta.env.VITE_BASE_URL + 'admin/addMedicine', { newMed: newMed, cost: cost, doseData: doseData }, {
-          // headers: {
-          //   Authorization: `Bearer ${adminToken}`,
-          // }
         }).then(res => {
           setStatus(res.data)
           setTimeout(() => {
@@ -152,7 +141,7 @@ function Medicines() {
               <input type="text" value={newMed} onChange={(e) => setNewMed(e.target.value)} className="form-control" name="medName" />
 
               <label htmlFor="depName ">Medicine Dose</label>
-              <p style={{ opacity: '60%', fontSize: '10px' }} className="mb-0" >Please note that the first letter should be capital</p>
+              <p style={{ opacity: '60%', fontSize: '10px' }} className="mb-0" >Please note that the dose cannot be negative value</p>
               <input type="number" value={dose} onChange={(e) => setDose(e.target.value)} className="form-control" name="medName" />
               <button className="mt-1 btn btn-success p-2" onClick={handleDoseData} style={{ fontSize: '15px' }}>Add</button><br />
 
@@ -165,7 +154,24 @@ function Medicines() {
                     <div key={index} style={{ marginRight: '10px' }}>{el}</div>
                   ))}
                 </div>
-                {
+                
+              </div>
+              <label htmlFor="depName " className="mt-4">Medicine cost</label>
+              <p style={{ opacity: '60%', fontSize: '10px' }} className="mb-0">Please note that the costs cannot be negative value</p>
+              <input type="number" value={cost} onChange={(e) => setCost(e.target.value)} className="form-control" name="medName" />
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={handleCreate}>Create</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button type="button" className="btn mb-2 ms-1 btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" >Create Medicine</button>
+      </div>
+      <div className="ms-1" style={{ zIndex: '0' }}>
+        {
                   createStatus == "error" ?
                     <div className="alert alert-danger" role="alert">
                       There was an error! cannot create depaprtment.
@@ -192,33 +198,15 @@ function Medicines() {
                               </div>
                               : createStatus == 'please enter proper dose' ?
                                 <div className="alert alert-danger" role="alert">
-                                  please enter proper dose.
+                                  Please enter proper dose.
                                 </div>
                                 : createStatus == 'please enter proper cost' ?
                                   <div className="alert alert-danger" role="alert">
-                                    please enter proper cost
+                                    Please enter proper cost
                                   </div>
 
                                   : ''
                 }
-              </div>
-
-
-              <label htmlFor="depName " className="mt-4">Medicine cost</label>
-              <p style={{ opacity: '60%', fontSize: '10px' }} className="mb-0">Please note that the first letter should be capital</p>
-              <input type="number" value={cost} onChange={(e) => setCost(e.target.value)} className="form-control" name="medName" />
-            </div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={handleCreate}>Create</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <button type="button" className="btn mb-2 ms-1 btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" >Create Medicine</button>
-      </div>
-      <div className="ms-1" style={{ zIndex: '0' }}>
         <h3>Departments</h3>
 
         <input
