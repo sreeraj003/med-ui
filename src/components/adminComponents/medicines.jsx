@@ -146,10 +146,9 @@ function Medicines() {
               <button className="mt-1 btn btn-success p-2" onClick={handleDoseData} style={{ fontSize: '15px' }}>Add</button><br />
 
 
-              <div style={{ borderWidth: 1, borderStyle: 'solid', borderRadius: '10px', maxHeight: '100px' }} className="mt-3 text-wrap">
-                <span className="p-3 text-primary" >Selected medicine</span>
+              <div style={{ borderWidth: 1, borderStyle: 'solid', borderRadius: '10px', maxHeight: '100px' }} className="mt-3 p-3 text-wrap">
+                <span className="text-primary" >Selected medicine</span>
                 <div style={{ display: 'flex', flexDirection: 'row' }}>
-
                   {doseData.map((el, index) => (
                     <div key={index} style={{ marginRight: '10px' }}>{el}</div>
                   ))}
