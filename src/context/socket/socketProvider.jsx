@@ -11,7 +11,7 @@ export const useSocket = () => {
 
 export const SocketProvider = (props) => {
 
-    const socket = useMemo(() => io('https://thestroke.shop'), [])
+    const socket = useMemo(() => io('https://medcore.online'), [])
     return (
         <SocketContext.Provider value={socket} >
             {props.children}
