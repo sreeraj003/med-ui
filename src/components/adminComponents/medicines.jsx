@@ -102,6 +102,11 @@ function Medicines() {
         await axios.post(import.meta.env.VITE_BASE_URL + 'admin/addMedicine', { newMed: newMed, cost: cost, doseData: doseData }, {
         }).then(res => {
           setStatus(res.data)
+          setDoseData([])
+          setCost("")
+          setDose("")
+          setNewMed("")
+          setMedicineList([])
           setTimeout(() => {
             setStatus('')
           }, 4000)
